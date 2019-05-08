@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head></head><body><h1>EROFT Final</h1>
+  <html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <title> EROFT Final </title>
+<script>
+
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    var socket = io();
+
+    document.addEventListener("keyup", keyEvent => {
+        console.log(keyEvent)
+        if (keyEvent.code.startsWith("Arrow")) {
+            socket.emit("keyup", keyEvent.code.replace("Arrow", ""))    
+        }    
+    })
+    
+    socket.on("broadcastedKeyup", x => console.log(`serverconfirm ${x}`))
+  })
+
+</script>
+  </head>
+  <body>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <meta charset="utf-8">
+      
+    <button class="btn right"> right</button> 
+    <button class="btn left"> left</button> 
+    <button class="btn down"> down</button> 
+    <button class="btn up"> up</button> 
+        <script src="sketch.js"></script>
+  </body>
+  
+</html>
